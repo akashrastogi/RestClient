@@ -7,19 +7,27 @@
 
 import Foundation
 
+public protocol APIClientDelegate: AnyObject {
+  func willSendRequest(_ request: inout URLRequest) async throws
+}
+
 public actor RestClient {
   private let session: URLSession
   private let host: String
+  private weak var delegate: APIClientDelegate?
   public init(
     host: String,
-    configuration: URLSessionConfiguration = .ephemeral
+    configuration: URLSessionConfiguration = .default,
+    delegate: APIClientDelegate? = nil
   ) {
     self.host = host
     session = URLSession(configuration: configuration)
+    self.delegate = delegate
   }
 
   public func send<T: Decodable>(_ request: Request<T>) async throws -> T {
-    let urlRequest = try await makeRequest(request)
+    var urlRequest = try await makeRequest(request)
+    try await delegate?.willSendRequest(&urlRequest)
     let response = try await session.data(for: urlRequest, delegate: nil)
     if let httpResponse = response.1 as? HTTPURLResponse,
        (200 ..< 300).contains(httpResponse.statusCode)

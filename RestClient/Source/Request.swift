@@ -26,4 +26,5 @@ public struct Request<Response> {
   var queryParams: [String: String]? = nil
   var body: [String: AnyObject]? = nil
   var headers: [String: String]? = nil
+  var shouldRetry: Bool = true
 }

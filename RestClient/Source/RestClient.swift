@@ -25,10 +25,10 @@ public actor RestClient {
     self.delegate = delegate
   }
 
-  public func send<T: Decodable>(_ request: Request<T>) async throws -> T {
+  public func execute<T: Decodable>(_ request: Request<T>) async throws -> T {
     var urlRequest = try await makeRequest(request)
     try await delegate?.willSendRequest(&urlRequest)
-    let response = try await session.data(for: urlRequest, delegate: nil)
+    let response = try await send(urlRequest, retry: request.shouldRetry)
     if let httpResponse = response.1 as? HTTPURLResponse,
        (200 ..< 300).contains(httpResponse.statusCode)
     {
@@ -67,5 +67,17 @@ private extension RestClient {
       urlRequest.httpBody = try JSONSerialization.data(withJSONObject: body)
     }
     return urlRequest
+  }
+
+  func send(_ urlRequest: URLRequest, retry: Bool) async throws -> (Data, URLResponse) {
+    do {
+      return try await session.data(for: urlRequest, delegate: nil)
+    } catch {
+      if retry {
+        return try await send(urlRequest, retry: false)
+      } else {
+        throw error
+      }
+    }
   }
 }

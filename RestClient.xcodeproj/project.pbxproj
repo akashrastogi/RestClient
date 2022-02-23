@@ -8,11 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		1B00716F27C515B8006F2084 /* RestClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B00716E27C515B8006F2084 /* RestClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1B00717827C515FF006F2084 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B00717727C515FF006F2084 /* Request.swift */; };
+		1BA468ED27C5D49100BCF9AA /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA468EC27C5D49100BCF9AA /* ApiError.swift */; };
+		1BA468EF27C5D53000BCF9AA /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA468EE27C5D53000BCF9AA /* RestClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1B00716B27C515B8006F2084 /* RestClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RestClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B00716E27C515B8006F2084 /* RestClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RestClient.h; sourceTree = "<group>"; };
+		1B00717727C515FF006F2084 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		1BA468EC27C5D49100BCF9AA /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		1BA468EE27C5D53000BCF9AA /* RestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,9 +51,20 @@
 		1B00716D27C515B8006F2084 /* RestClient */ = {
 			isa = PBXGroup;
 			children = (
+				1B00717627C515D7006F2084 /* Source */,
 				1B00716E27C515B8006F2084 /* RestClient.h */,
 			);
 			path = RestClient;
+			sourceTree = "<group>";
+		};
+		1B00717627C515D7006F2084 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				1B00717727C515FF006F2084 /* Request.swift */,
+				1BA468EC27C5D49100BCF9AA /* ApiError.swift */,
+				1BA468EE27C5D53000BCF9AA /* RestClient.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,6 +110,7 @@
 				TargetAttributes = {
 					1B00716A27C515B8006F2084 = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 					};
 				};
 			};
@@ -129,6 +147,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B00717827C515FF006F2084 /* Request.swift in Sources */,
+				1BA468ED27C5D49100BCF9AA /* ApiError.swift in Sources */,
+				1BA468EF27C5D53000BCF9AA /* RestClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +281,7 @@
 		1B00717327C515B8006F2084 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -279,6 +301,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -287,6 +310,7 @@
 		1B00717427C515B8006F2084 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;

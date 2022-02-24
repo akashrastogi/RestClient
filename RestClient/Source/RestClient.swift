@@ -25,6 +25,7 @@ public actor RestClient {
     self.delegate = delegate
   }
 
+  @available(iOS 15.0, *)
   public func execute<T: Decodable>(_ request: Request<T>) async throws -> T {
     var urlRequest = try await makeRequest(request)
     try await delegate?.willSendRequest(&urlRequest)
@@ -69,6 +70,7 @@ private extension RestClient {
     return urlRequest
   }
 
+  @available(iOS 15.0, *)
   func send(_ urlRequest: URLRequest, retry: Bool) async throws -> (Data, URLResponse) {
     do {
       return try await session.data(for: urlRequest, delegate: nil)

@@ -10,7 +10,6 @@ import Foundation
 public struct ApiError: Error {
   public let httpURLResponse: HTTPURLResponse?
   public let data: Data?
-  public let error: Error?
 
   public init(
     httpURLResponse: HTTPURLResponse? = nil,
@@ -19,6 +18,5 @@ public struct ApiError: Error {
   ) {
     self.httpURLResponse = httpURLResponse
     self.data = data
-    self.error = error
   }
 }

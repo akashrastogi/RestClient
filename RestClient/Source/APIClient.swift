@@ -12,15 +12,18 @@ public protocol APIClientDelegate: AnyObject {
 }
 
 public actor APIClient {
+  private let scheme: Scheme
   private let session: URLSession
   private let host: String
   private weak var delegate: APIClientDelegate?
 
   public init(
+    scheme: Scheme,
     host: String,
     configuration: URLSessionConfiguration = .default,
     delegate: APIClientDelegate? = nil
   ) {
+    self.scheme = scheme
     self.host = host
     self.session = URLSession(configuration: configuration)
     self.delegate = delegate
@@ -47,7 +50,7 @@ public actor APIClient {
 private extension APIClient {
   func makeURL(path: String, queryParams: [String: String]?) throws -> URL {
     var components = URLComponents()
-    components.scheme = "https"
+    components.scheme = scheme.rawValue
     components.host = host
     components.path = path
     var queryItems = [URLQueryItem]()

@@ -7,6 +7,13 @@
 
 import Foundation
 
+// MARK: URL Scheme
+
+public enum Scheme: String {
+  case http = "http"
+  case https = "https"
+}
+
 // MARK: Http Methods
 
 public enum HttpMethod: String {

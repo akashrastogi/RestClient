@@ -10,7 +10,7 @@
 		1B00716F27C515B8006F2084 /* RestClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B00716E27C515B8006F2084 /* RestClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1B00717827C515FF006F2084 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B00717727C515FF006F2084 /* Request.swift */; };
 		1BA468ED27C5D49100BCF9AA /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA468EC27C5D49100BCF9AA /* ApiError.swift */; };
-		1BA468EF27C5D53000BCF9AA /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA468EE27C5D53000BCF9AA /* RestClient.swift */; };
+		1BA468EF27C5D53000BCF9AA /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA468EE27C5D53000BCF9AA /* APIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,7 +18,7 @@
 		1B00716E27C515B8006F2084 /* RestClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RestClient.h; sourceTree = "<group>"; };
 		1B00717727C515FF006F2084 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		1BA468EC27C5D49100BCF9AA /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
-		1BA468EE27C5D53000BCF9AA /* RestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
+		1BA468EE27C5D53000BCF9AA /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +62,7 @@
 			children = (
 				1B00717727C515FF006F2084 /* Request.swift */,
 				1BA468EC27C5D49100BCF9AA /* ApiError.swift */,
-				1BA468EE27C5D53000BCF9AA /* RestClient.swift */,
+				1BA468EE27C5D53000BCF9AA /* APIClient.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -149,7 +149,7 @@
 			files = (
 				1B00717827C515FF006F2084 /* Request.swift in Sources */,
 				1BA468ED27C5D49100BCF9AA /* ApiError.swift in Sources */,
-				1BA468EF27C5D53000BCF9AA /* RestClient.swift in Sources */,
+				1BA468EF27C5D53000BCF9AA /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +208,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -266,7 +266,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

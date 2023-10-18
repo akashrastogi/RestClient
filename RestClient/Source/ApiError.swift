@@ -9,13 +9,16 @@ import Foundation
 
 public struct ApiError: Error {
   public let httpURLResponse: HTTPURLResponse?
-  public let httpRawResponse: Data?
+  public let data: Data?
+  public let error: Error?
 
   public init(
     httpURLResponse: HTTPURLResponse? = nil,
-    httpRawResponse: Data? = nil
+    data: Data? = nil,
+    error: Error? = nil
   ) {
     self.httpURLResponse = httpURLResponse
-    self.httpRawResponse = httpRawResponse
+    self.data = data
+    self.error = error
   }
 }

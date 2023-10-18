@@ -20,7 +20,7 @@ public enum HttpMethod: String {
 
 // MARK: Request parameters
 
-public struct Request<Response> {
+public struct RequestResource {
   var method: HttpMethod
   var path: String
   var queryParams: [String: String]? = nil

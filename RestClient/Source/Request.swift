@@ -30,8 +30,8 @@ public enum HttpMethod: String {
 public struct RequestResource {
   let method: HttpMethod
   let path: String
-  let queryParams: [String: String]? = nil
-  let body: [String: AnyObject]? = nil
-  let headers: [String: String]? = nil
-  let shouldRetry: Bool = true
+  var queryParams: [String: String]? = nil
+  var body: [String: AnyObject]? = nil
+  var headers: [String: String]? = nil
+  var shouldRetry: Bool = true
 }

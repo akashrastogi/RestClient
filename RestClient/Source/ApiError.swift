@@ -7,16 +7,8 @@
 
 import Foundation
 
-public struct ApiError: Error {
-  public let httpURLResponse: HTTPURLResponse?
-  public let data: Data?
-
-  public init(
-    httpURLResponse: HTTPURLResponse? = nil,
-    data: Data? = nil,
-    error: Error? = nil
-  ) {
-    self.httpURLResponse = httpURLResponse
-    self.data = data
-  }
+enum ApiError: Error {
+  case customError(httpURLResponse: HTTPURLResponse?, data: Data?)
+  case badUrl(error: NSError)
+  case parsingFailed(error: NSError)
 }

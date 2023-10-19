@@ -36,7 +36,11 @@ public actor APIClient {
     delegate?.willSendRequest(&urlRequest)
     let (data, response) = try await send(urlRequest)
     try validate(response: response, data: data)
-    return try JSONDecoder().decode(ApiResponse.self, from: data)
+    do {
+      return try JSONDecoder().decode(ApiResponse.self, from: data)
+    } catch {
+      throw ApiError.parsingFailed(error: error as NSError)
+    }
   }
 
   public func execute(_ request: RequestResource) async throws -> Void {
@@ -52,14 +56,14 @@ private extension APIClient {
     var components = URLComponents()
     components.scheme = scheme.rawValue
     components.host = host
-    components.path = path
+    components.path = path.hasPrefix("/") ? path : "/\(path)"
     var queryItems = [URLQueryItem]()
     queryParams?.forEach {
       queryItems.append(URLQueryItem(name: $0.key, value: $0.value))
     }
     components.queryItems = queryItems
     guard let url = components.url else {
-      throw URLError(.badURL)
+      throw ApiError.badUrl(error: URLError(.badURL) as NSError)
     }
     return url
   }
@@ -81,7 +85,7 @@ private extension APIClient {
   func validate(response: URLResponse, data: Data) throws {
     guard let httpResponse = response as? HTTPURLResponse else { return }
     if !(200..<300).contains(httpResponse.statusCode) {
-      throw ApiError(httpURLResponse: response as? HTTPURLResponse, data: data)
+      throw ApiError.customError(httpURLResponse: response as? HTTPURLResponse, data: data)
     }
   }
 }

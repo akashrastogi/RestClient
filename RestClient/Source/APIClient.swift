@@ -11,7 +11,7 @@ public protocol APIClientDelegate: AnyObject {
   func willSendRequest(_ request: inout URLRequest)
 }
 
-public actor APIClient {
+public final actor APIClient {
   private let scheme: Scheme
   private let session: URLSession
   private let host: String

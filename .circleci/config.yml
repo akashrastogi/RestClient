@@ -10,7 +10,7 @@ jobs:
       xcode: 14.1.0
     environment:
       FL_OUTPUT_DIR: output
-      FASTLANE_LANE: test
+      FASTLANE_LANE: test_ci
     steps:
       - checkout
       - run: bundle install
@@ -22,29 +22,7 @@ jobs:
       - store_test_results:
           path: output/scan
 
-  adhoc:
-    macos:
-      xcode: 14.1.0
-    environment:
-      FL_OUTPUT_DIR: output
-      FASTLANE_LANE: adhoc
-    steps:
-      - checkout
-      - run: bundle install
-      - run:
-          name: Fastlane
-          command: bundle exec fastlane $FASTLANE_LANE
-      - store_artifacts:
-          path: output
-
 workflows:
-  build-test-adhoc:
+  build-test:
     jobs:
       - build-and-test
-      - adhoc:
-          # filters:
-          #   branches:
-          #     only: development
-          requires:
-            - build-and-test
-

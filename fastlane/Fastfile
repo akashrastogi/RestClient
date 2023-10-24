@@ -1,0 +1,21 @@
+# fastlane/Fastfile
+default_platform(:ios)
+
+test_device="iPhone 14"
+
+PROJECT="RestClient.xcodeproj"
+PROJECT_SCHEME="RestClient"
+
+ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "120"
+
+platform :ios do
+  desc "Runs all the tests"
+  lane :test_ci do |options|    
+    scan(
+      device: test_device,
+      scheme: PROJECT_SCHEME,
+      clean: false,
+      code_coverage: true
+    )
+  end
+end
